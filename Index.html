@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Halaman admin RobuxRadit untuk pengelolaan penjualan Robux via gamepass">
+  <title>Admin RobuxRadit</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="Logo Robux.jpg" alt="Logo RobuxRadit" width="70" height="70">
+    <h1>Halaman Admin RobuxRadit</h1>
+    <p>Panel admin penjualan Robux via pembelian gamepass berbasis web</p>
+    <hr>
+  </header>
+
+  <!-- Navigasi -->
+  <nav>
+    <h2>Menu Navigasi</h2>
+    <ul>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#alur">Alur Pesanan</a></li>
+      <li><a href="#antrian">Antrian Pesanan</a></li>
+      <li><a href="#statistik">Statistik</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+    <hr>
+  </nav>
+
+  <!-- Konten utama -->
+  <main>
+    <section id="dashboard">
+      <h2>Dashboard Admin</h2>
+      <p>
+        Selamat datang di halaman admin <strong>RobuxRadit</strong>. Halaman ini digunakan
+        untuk memantau pesanan Robux, mengecek link gamepass dari pembeli, dan melakukan
+        konfirmasi pesanan yang telah selesai diproses.
+      </p>
+    </section>
+
+    <section id="alur">
+      <h2>Alur Proses Pesanan</h2>
+
+      <article>
+        <h3>Konsep Transaksi</h3>
+        <ol>
+          <li>Pembeli membuat gamepass di Roblox.</li>
+          <li>Pembeli melakukan order Robux ke admin melalui website.</li>
+          <li>Pembeli memasukkan username akun Roblox dan link gamepass.</li>
+          <li>Pembeli mengirim pesanan lalu menunggu proses admin.</li>
+          <li>Admin membeli gamepass yang dibuat pembeli sebagai cara pengiriman Robux.</li>
+          <li>Setelah pembelian berhasil, admin mengonfirmasi pesanan.</li>
+          <li>Pembeli menyelesaikan pembelian setelah Robux masuk.</li>
+        </ol>
+      </article>
+    </section>
+
+    <section id="antrian">
+      <h2>Antrian Pesanan</h2>
+      <p>Data pesanan terbaru:</p>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Username Roblox</th>
+            <th>Link Gamepass</th>
+            <th>Nominal Robux</th>
+            <th>Status</th>
+            <th>Waktu Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>@RaditGaming</td>
+            <td>https://roblox.com/gamepass/12345</td>
+            <td>400</td>
+            <td>Menunggu Diproses</td>
+            <td><time datetime="2026-03-10T09:00">10 Maret 2026, 09:00</time></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>@MUTTA_KUN</td>
+            <td>https://roblox.com/gamepass/22345</td>
+            <td>800</td>
+            <td>Sedang Dibeli Admin</td>
+            <td><time datetime="2026-03-10T09:30">10 Maret 2026, 09:30</time></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>@N3ROOO27</td>
+            <td>https://roblox.com/gamepass/32345</td>
+            <td>1200</td>
+            <td>Selesai</td>
+            <td><time datetime="2026-03-10T10:00">10 Maret 2026, 10:00</time></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>@WafflesAgain</td>
+            <td>https://roblox.com/gamepass/42345</td>
+            <td>1700</td>
+            <td>Menunggu Konfirmasi</td>
+            <td><time datetime="2026-03-10T10:15">10 Maret 2026, 10:15</time></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>@CanCalcifero</td>
+            <td>https://roblox.com/gamepass/52345</td>
+            <td>2000</td>
+            <td>Menunggu Diproses</td>
+            <td><time datetime="2026-03-10T10:45">10 Maret 2026, 10:45</time></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  
+  <aside id="statistik">
+    <h2>Statistik Admin</h2>
+    <ul>
+      <li>Total Pesanan Hari Ini: 25</li>
+      <li>Pesanan Menunggu: 8</li>
+      <li>Pesanan Diproses: 6</li>
+      <li>Pesanan Selesai: 11</li>
+      <li>Status Admin: Online</li>
+    </ul>
+  </aside>
+
+  <hr>
+
+  
+  <footer id="kontak">
+    <p>&copy; 2026 RobuxRadit. All rights reserved.</p>
+    <p>Admin penjualan Robux via pembelian gamepass.</p>
+    <p>Email: admin@robuxradit.com</p>
+    <p>Telepon: 0812-3456-7890</p>
+    <p>Alamat: Jl. Gaming Online No. 10, Jakarta</p>
+  </footer>
+
+</body>
+</html>
