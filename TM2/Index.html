@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Halaman admin RobuxRadit untuk pengelolaan penjualan Robux via gamepass">
+  <title>Admin RobuxRadit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header + Navbar -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="brand">
+        <img src="Logo Robux.jpg" alt="Logo RobuxRadit" width="70" height="70">
+        <div>
+          <h1>Halaman Admin RobuxRadit</h1>
+          <p>Panel admin</p>
+        </div>
+      </div>
+
+      <ul class="nav-menu">
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#alur">Alur Pesanan</a></li>
+        <li><a href="#antrian">Antrian Pesanan</a></li>
+        <li><a href="#statistik">Statistik</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h2>Dashboard Admin RobuxRadit</h2>
+        <p>
+          Kelola pesanan Robux, cek link gamepass pembeli, dan pantau status order.
+        </p>
+      </div>
+    </section>
+
+    <!-- Grid/Card -->
+    <section id="dashboard" class="dashboard-section">
+      <h2>Dashboard Admin</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Total Pesanan</h3>
+          <p>25 Pesanan Hari Ini</p>
+        </article>
+
+        <article class="card">
+          <h3>Pesanan Menunggu</h3>
+          <p>8 Pesanan</p>
+        </article>
+
+        <article class="card">
+          <h3>Pesanan Diproses</h3>
+          <p>6 Pesanan</p>
+        </article>
+
+        <article class="card">
+          <h3>Pesanan Selesai</h3>
+          <p>11 Pesanan</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Form Pencarian -->
+    <section class="search-section">
+      <h2>Pencarian Data Pesanan</h2>
+      <form class="search-form">
+        <input type="text" placeholder="Cari username Roblox">
+        <input type="text" placeholder="Cari link gamepass">
+        <select>
+          <option>Status Pesanan</option>
+          <option>Menunggu Diproses</option>
+          <option>Sedang Dibeli Admin</option>
+          <option>Menunggu Konfirmasi</option>
+          <option>Selesai</option>
+        </select>
+        <button type="submit">Cari Data</button>
+      </form>
+    </section>
+
+    <!-- Alur -->
+    <section id="alur">
+      <h2>Alur Proses Pesanan</h2>
+      <article>
+        <ol>
+          <li>Pembeli membuat gamepass di Roblox.</li>
+          <li>Pembeli melakukan order Robux ke admin melalui website.</li>
+          <li>Pembeli memasukkan username akun Roblox dan link gamepass.</li>
+          <li>Pembeli mengirim pesanan lalu menunggu proses admin.</li>
+          <li>Admin membeli gamepass yang dibuat pembeli sebagai cara pengiriman Robux.</li>
+          <li>Setelah pembelian berhasil, admin mengonfirmasi pesanan.</li>
+          <li>Pembeli menyelesaikan pembelian setelah Robux masuk.</li>
+        </ol>
+      </article>
+    </section>
+
+    <!-- Layout Tabel + Sidebar -->
+    <section class="content-layout">
+      <div class="table-section" id="antrian">
+        <h2>Antrian Pesanan</h2>
+        <p>Data pesanan terbaru:</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Username Roblox</th>
+                <th>Link Gamepass</th>
+                <th>Nominal Robux</th>
+                <th>Status</th>
+                <th>Waktu Order</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>@RaditGaming</td>
+                <td>https://roblox.com/gamepass/12345</td>
+                <td>400</td>
+                <td>Menunggu Diproses</td>
+                <td>10 Maret 2026, 09:00</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>@MUTTA_KUN</td>
+                <td>https://roblox.com/gamepass/22345</td>
+                <td>800</td>
+                <td>Sedang Dibeli Admin</td>
+                <td>10 Maret 2026, 09:30</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>@N3ROOO27</td>
+                <td>https://roblox.com/gamepass/32345</td>
+                <td>1200</td>
+                <td>Selesai</td>
+                <td>10 Maret 2026, 10:00</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>@WafflesAgain</td>
+                <td>https://roblox.com/gamepass/42345</td>
+                <td>1700</td>
+                <td>Menunggu Konfirmasi</td>
+                <td>10 Maret 2026, 10:15</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>@CanCalcifero</td>
+                <td>https://roblox.com/gamepass/52345</td>
+                <td>2000</td>
+                <td>Menunggu Diproses</td>
+                <td>10 Maret 2026, 10:45</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>@fardipsme</td>
+                <td>https://roblox.com/gamepass/62345</td>
+                <td>500</td>
+                <td>Menunggu Diproses</td>
+                <td>10 Maret 2026, 11:00</td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <aside id="statistik" class="sidebar">
+        <h2>Filter & Statistik</h2>
+
+        <form class="filter-form">
+          <label><input type="checkbox" checked> Menunggu Diproses</label>
+          <label><input type="checkbox" checked> Sedang Dibeli Admin</label>
+          <label><input type="checkbox" checked> Menunggu Konfirmasi</label>
+          <label><input type="checkbox" checked> Selesai</label>
+        </form>
+
+        <ul>
+          <li>Total Pesanan Hari Ini: 25</li>
+          <li>Pesanan Menunggu: 8</li>
+          <li>Pesanan Diproses: 6</li>
+          <li>Pesanan Selesai: 11</li>
+          <li>Status Admin: Online</li>
+        </ul>
+      </aside>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="kontak" class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>RobuxRadit</h3>
+        <p>Admin penjualan Robux via pembelian gamepass.</p>
+      </div>
+
+      <div>
+        <h3>Kontak</h3>
+        <p>Email: admin@robuxradit.com</p>
+        <p>Telepon: 0812-3456-7890</p>
+      </div>
+
+      <div>
+        <h3>Alamat</h3>
+        <p>Jl. Gaming Online No. 10, Jakarta</p>
+        <p>&copy; 2026 RobuxRadit</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
