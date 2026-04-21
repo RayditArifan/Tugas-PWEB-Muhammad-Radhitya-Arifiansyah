@@ -3,218 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Halaman admin RobuxRadit untuk pengelolaan penjualan Robux via gamepass">
-  <title>Admin RobuxRadit</title>
+  <meta name="description" content="Aplikasi Praktikum Individu - Sistem Manajemen Inventaris Mini">
+  <title>Praktikum Individu - Inventaris RobuxRadit</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-  <!-- Header + Navbar -->
   <header class="site-header">
     <nav class="navbar">
       <div class="brand">
-        <img src="Logo Robux.jpg" alt="Logo RobuxRadit" width="70" height="70">
+        <div class="brand-badge">RR</div>
         <div>
-          <h1>Halaman Admin RobuxRadit</h1>
-          <p>Panel admin</p>
+          <h1>Inventaris RobuxRadit</h1>
+          <p>Kelola data barang dengan lebih rapi dan cepat</p>
         </div>
       </div>
 
       <ul class="nav-menu">
         <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#alur">Alur Pesanan</a></li>
-        <li><a href="#antrian">Antrian Pesanan</a></li>
-        <li><a href="#statistik">Statistik</a></li>
-        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#form-section">Form Barang</a></li>
+        <li><a href="#inventaris-section">Daftar Barang</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="page-content">
-
-    <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-overlay">
-        <h2>Dashboard Admin RobuxRadit</h2>
+      <div class="hero-content">
+        <span class="hero-tag">Data barang • pencarian • filter • statistik</span>
+        <h2>Kelola stok barang dalam satu halaman</h2>
         <p>
-          Kelola pesanan Robux, cek link gamepass pembeli, dan pantau status order.
+          Tambah barang baru, ubah data yang sudah ada, cari lebih cepat, lalu pantau stok dan nilai barang tanpa ribet.
         </p>
       </div>
     </section>
 
-    <!-- Grid/Card -->
     <section id="dashboard" class="dashboard-section">
-      <h2>Dashboard Admin</h2>
+      <div class="section-heading">
+        <h2>Statistik Inventaris</h2>
+        <p>Lihat ringkasan data barang secara cepat.</p>
+      </div>
+
       <div class="card-grid">
-        <article class="card">
-          <h3>Total Pesanan</h3>
-          <p>25 Pesanan Hari Ini</p>
+        <article class="card stat-card">
+          <p class="stat-label">Total Barang</p>
+          <h3 id="statTotalBarang">0</h3>
+          <small>Jumlah jenis barang</small>
         </article>
 
-        <article class="card">
-          <h3>Pesanan Menunggu</h3>
-          <p>8 Pesanan</p>
+        <article class="card stat-card">
+          <p class="stat-label">Total Stok</p>
+          <h3 id="statTotalStok">0</h3>
+          <small>Total seluruh unit barang</small>
         </article>
 
-        <article class="card">
-          <h3>Pesanan Diproses</h3>
-          <p>6 Pesanan</p>
+        <article class="card stat-card">
+          <p class="stat-label">Total Nilai Inventaris</p>
+          <h3 id="statTotalNilai">Rp 0</h3>
+          <small>Stok × harga per barang</small>
         </article>
 
-        <article class="card">
-          <h3>Pesanan Selesai</h3>
-          <p>11 Pesanan</p>
+        <article class="card stat-card warning-card">
+          <p class="stat-label">Stok Menipis</p>
+          <h3 id="statStokMenipis">0</h3>
+          <small>Barang dengan stok &lt; 5</small>
         </article>
       </div>
     </section>
 
-    <!-- Form Pencarian -->
-    <section class="search-section">
-      <h2>Pencarian Data Pesanan</h2>
-      <form class="search-form">
-        <input type="text" placeholder="Cari username Roblox">
-        <input type="text" placeholder="Cari link gamepass">
-        <select>
-          <option>Status Pesanan</option>
-          <option>Menunggu Diproses</option>
-          <option>Sedang Dibeli Admin</option>
-          <option>Menunggu Konfirmasi</option>
-          <option>Selesai</option>
-        </select>
-        <button type="submit">Cari Data</button>
+      <div class="stock-note">
+        <h2>Keterangan Status Stok</h2>
+          <p><strong>Aman</strong> berarti stok masih 5 atau lebih, jadi barang masih cukup tersedia.</p>
+          <p><strong>Menipis</strong> berarti stok di bawah 5, jadi barang sebaiknya segera ditambah.</p>
+        </div>
+
+    <section id="form-section" class="form-section">
+      <div class="section-heading">
+        <h2>Form Data Barang</h2>
+        <p>Isi data barang lewat form berikut.</p>
+      </div>
+
+      <div id="formStatus" class="status-box" aria-live="polite"></div>
+
+      <form id="inventoryForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="kodeBarang">Kode Barang</label>
+            <input type="text" id="kodeBarang" name="kodeBarang" placeholder="Contoh: BRG-001" autocomplete="off">
+            <small class="error-message" id="error-kodeBarang"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="namaBarang">Nama Barang</label>
+            <input type="text" id="namaBarang" name="namaBarang" placeholder="Masukkan nama barang" autocomplete="off">
+            <small class="error-message" id="error-namaBarang"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <select id="kategori" name="kategori">
+              <option value="">Pilih kategori</option>
+              <option value="Gamepass">Gamepass</option>
+              <option value="Voucher">Voucher</option>
+              <option value="Private Server">Private Server</option>
+            </select>
+            <small class="error-message" id="error-kategori"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="stok">Stok</label>
+            <input type="number" id="stok" name="stok" min="0" step="1" placeholder="Masukkan jumlah stok">
+            <small class="error-message" id="error-stok"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="harga">Harga</label>
+            <input type="number" id="harga" name="harga" min="0" step="1000" placeholder="Masukkan harga barang">
+            <small class="error-message" id="error-harga"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="tanggalMasuk">Tanggal Masuk</label>
+            <input type="date" id="tanggalMasuk" name="tanggalMasuk">
+            <small class="error-message" id="error-tanggalMasuk"></small>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button type="submit" class="btn btn-primary" id="submitButton">Tambah Barang</button>
+          <button type="button" class="btn btn-secondary" id="cancelEditButton">Batal Edit</button>
+        </div>
       </form>
     </section>
 
-    <!-- Alur -->
-    <section id="alur">
-      <h2>Alur Proses Pesanan</h2>
-      <article>
-        <ol>
-          <li>Pembeli membuat gamepass di Roblox.</li>
-          <li>Pembeli melakukan order Robux ke admin melalui website.</li>
-          <li>Pembeli memasukkan username akun Roblox dan link gamepass.</li>
-          <li>Pembeli mengirim pesanan lalu menunggu proses admin.</li>
-          <li>Admin membeli gamepass yang dibuat pembeli sebagai cara pengiriman Robux.</li>
-          <li>Setelah pembelian berhasil, admin mengonfirmasi pesanan.</li>
-          <li>Pembeli menyelesaikan pembelian setelah Robux masuk.</li>
-        </ol>
-      </article>
-    </section>
+    <section class="controls-section">
+      <div class="section-heading">
+        <h2>Pencarian & Filter</h2>
+        <p>Cari barang berdasarkan nama atau kode, lalu saring sesuai kategori.</p>
+      </div>
 
-    <!-- Layout Tabel + Sidebar -->
-    <section class="content-layout">
-      <div class="table-section" id="antrian">
-        <h2>Antrian Pesanan</h2>
-        <p>Data pesanan terbaru:</p>
+      <div class="control-grid">
+        <div class="form-group">
+          <label for="searchInput">Cari Barang</label>
+          <input type="text" id="searchInput" placeholder="Cari kode atau nama barang">
+        </div>
 
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Username Roblox</th>
-                <th>Link Gamepass</th>
-                <th>Nominal Robux</th>
-                <th>Status</th>
-                <th>Waktu Order</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>@RaditGaming</td>
-                <td>https://roblox.com/gamepass/12345</td>
-                <td>400</td>
-                <td>Menunggu Diproses</td>
-                <td>10 Maret 2026, 09:00</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>@MUTTA_KUN</td>
-                <td>https://roblox.com/gamepass/22345</td>
-                <td>800</td>
-                <td>Sedang Dibeli Admin</td>
-                <td>10 Maret 2026, 09:30</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>@N3ROOO27</td>
-                <td>https://roblox.com/gamepass/32345</td>
-                <td>1200</td>
-                <td>Selesai</td>
-                <td>10 Maret 2026, 10:00</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>@WafflesAgain</td>
-                <td>https://roblox.com/gamepass/42345</td>
-                <td>1700</td>
-                <td>Menunggu Konfirmasi</td>
-                <td>10 Maret 2026, 10:15</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>@CanCalcifero</td>
-                <td>https://roblox.com/gamepass/52345</td>
-                <td>2000</td>
-                <td>Menunggu Diproses</td>
-                <td>10 Maret 2026, 10:45</td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>@fardipsme</td>
-                <td>https://roblox.com/gamepass/62345</td>
-                <td>500</td>
-                <td>Menunggu Diproses</td>
-                <td>10 Maret 2026, 11:00</td>
-            </tbody>
-          </table>
+        <div class="form-group">
+          <label for="filterKategori">Filter Kategori</label>
+          <select id="filterKategori">
+            <option value="Semua">Semua Kategori</option>
+            <option value="Gamepass">Gamepass</option>
+            <option value="Voucher">Voucher</option>
+            <option value="Membership">Membership</option>
+            <option value="Aksesori">Aksesori</option>
+          </select>
         </div>
       </div>
-
-      <aside id="statistik" class="sidebar">
-        <h2>Filter & Statistik</h2>
-
-        <form class="filter-form">
-          <label><input type="checkbox" checked> Menunggu Diproses</label>
-          <label><input type="checkbox" checked> Sedang Dibeli Admin</label>
-          <label><input type="checkbox" checked> Menunggu Konfirmasi</label>
-          <label><input type="checkbox" checked> Selesai</label>
-        </form>
-
-        <ul>
-          <li>Total Pesanan Hari Ini: 25</li>
-          <li>Pesanan Menunggu: 8</li>
-          <li>Pesanan Diproses: 6</li>
-          <li>Pesanan Selesai: 11</li>
-          <li>Status Admin: Online</li>
-        </ul>
-      </aside>
     </section>
 
+    <section id="inventaris-section" class="table-section">
+      <div class="section-heading">
+        <h2>Daftar Inventaris Barang</h2>
+        <p>Daftar barang yang sudah tersimpan akan tampil di sini.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Kode Barang</th>
+              <th>Nama Barang</th>
+              <th>Kategori</th>
+              <th>Stok</th>
+              <th>Harga</th>
+              <th>Tanggal Masuk</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer id="kontak" class="site-footer">
+  <footer class="site-footer">
     <div class="footer-grid">
       <div>
-        <h3>RobuxRadit</h3>
-        <p>Admin penjualan Robux via pembelian gamepass.</p>
+        <h3>Inventaris RobuxRadit</h3>
+        <p>Halaman sederhana untuk mengatur data inventaris barang.</p>
       </div>
-
       <div>
-        <h3>Kontak</h3>
-        <p>Email: admin@robuxradit.com</p>
-        <p>Telepon: 0812-3456-7890</p>
+        <h3>Fitur Wajib</h3>
+        <p>Tambah, ubah, hapus, cari, dan filter data barang dengan mudah.</p>
       </div>
-
       <div>
-        <h3>Alamat</h3>
-        <p>Jl. Gaming Online No. 10, Jakarta</p>
-        <p>&copy; 2026 RobuxRadit</p>
+        <h3>Status Aplikasi</h3>
+        <p>Data akan tetap tersimpan di browser selama tidak dihapus.</p>
       </div>
     </div>
   </footer>
-
 </body>
 </html>
