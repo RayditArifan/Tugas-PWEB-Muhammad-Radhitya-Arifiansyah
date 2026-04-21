@@ -83,6 +83,14 @@ select {
   color: var(--primary);
 }
 
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
 .brand h1 {
   font-size: clamp(20px, 4vw, 30px);
 }
