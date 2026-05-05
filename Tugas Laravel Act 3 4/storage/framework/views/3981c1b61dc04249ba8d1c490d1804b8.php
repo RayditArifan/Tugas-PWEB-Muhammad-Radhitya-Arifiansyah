@@ -1,0 +1,1 @@
+components.footer<?php /**PATH C:\laragon\www\Robuxraditt\storage\framework\views/0d065dbfac6a005bc89496100455d667.blade.php ENDPATH**/ ?>
